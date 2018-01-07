@@ -1,0 +1,24 @@
+FROM tensorflow/tensorflow:latest-gpu-py3
+LABEL maintainer="snhryt"
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Git
+RUN add-apt-repository ppa:git-core/ppa \
+    && apt-get update \
+    && apt-get install -qqy git
+
+# Python packages and OpenCV
+RUN pip install --no-cache-dir keras \
+                               h5py \
+                               tqdm \
+                               opencv-contrib-python
+
+# For using OpenCV
+RUN apt-get install -qqy python-qt4
+
+# Auto import in jupyter
+RUN mkdir -p /root/.ipython/profile_default/startup
+COPY auto_import.ipy /root/.ipython/profile_default/startup/
+
+CMD bash
