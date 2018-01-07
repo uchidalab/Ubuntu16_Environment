@@ -112,10 +112,8 @@ For more examples and ideas, visit:
 
 ## NVIDIA Docker
 ```sh
-curl -sL https://nvidia.github.io/nvidia-docker/gpgkey | \
-         sudo apt-key add -
-curl -sL https://nvidia.github.io/nvidia-docker/ubuntu16.04/amd64/nvidia-docker.list | \
-         sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+curl -sL https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+curl -sL https://nvidia.github.io/nvidia-docker/ubuntu16.04/amd64/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
 sudo apt update
 sudo apt install -y nvidia-docker2
 sudo pkill -SIGHUP dockerd
@@ -146,7 +144,7 @@ Sat Jan  6 12:46:03 2018
 ```
 
 ## sudo なしでDockerを使えるようにする
-毎回毎回 `sudo` をつけるのは面倒なので、`sudo` なしで `docker`, `nvidia-docker` コマンドを使えるようにする
+毎回毎回 `sudo` をつけるのは面倒なので、`sudo` なしで `docker` コマンドを使えるようにする
 ```sh
 sudo usermod -aG docker $USER
 ```
